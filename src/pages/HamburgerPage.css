@@ -1,0 +1,112 @@
+.hamburgerpage{
+    display: block;
+    position: absolute;
+    background-color: white;
+    width: 100%;
+    height: 100vh;
+    z-index: 2;
+    display: none;
+}
+
+.hamburgerpage header img{
+    height: 70px;
+    width: 150px;
+}
+
+.hamburgerpage header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 95%;
+    margin: 0 auto;
+}
+
+.fa-times{
+    color: rgb(175, 11, 11);
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.hamburgerpage-nav{
+    margin-top: 3em;
+}
+
+.hamburgerpage-nav li{
+    margin-bottom: 1em;
+    font-size: 1.2rem;
+
+    padding: .8em 0em .8em 1em;
+    transition: all .3s ease-in-out;
+    cursor: pointer;
+}
+
+.hamburgerpage-nav li:hover{
+    background-color: #e4e4e46c;
+    padding: .8em 0em .8em 1.4em;
+}
+
+
+.hamburgerpage-nav li a{
+    color: #102a42;
+}
+
+.hamburgerpage-cart-login{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hamburgerpage-cart,
+.hamburgerpage-login{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.hamburgerpage-cart{
+    margin-right: 2em;
+    cursor: pointer;
+    position: relative;
+}
+
+.hamburgerpage-cart i{
+    font-size: 1.2rem;
+    color: #102a42;
+}
+
+.hamburgerpage-cart h2{
+    font-weight: 500;
+    color: #102a42;
+    margin-right: .3em;
+}
+
+.hamburger-cart-number{
+    position: absolute;
+    color: white;
+    font-size: .8rem;
+    width: 25px;
+    height: 25px;
+    background-color: #ab7a5f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    right: -16px;
+    top: -4px;
+}
+
+.hamburgerpage-login{
+    cursor: pointer;
+}
+
+.hamburgerpage-login h2{
+    font-weight: 500;
+    color: #102a42;
+    margin-right: .3em;
+}
+
+.hamburgerpage-login i{
+    font-size: 1.2rem;
+    color: #102a42;
+}

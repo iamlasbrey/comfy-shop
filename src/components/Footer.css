@@ -1,0 +1,16 @@
+.footer{
+    background: black;
+    position: fixed;
+    bottom:  0px;
+    width: 100%;
+}
+
+.footer-content {
+    color: white;
+    text-align: center;
+    padding: 20px 0px
+}
+
+.footer-content p span{
+    color: #774f3a
+}

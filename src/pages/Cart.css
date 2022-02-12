@@ -1,0 +1,163 @@
+.section-1 .new-img img{
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.section-container{
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-1{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.section-1{
+    border-bottom: 1px solid rgba(128, 128, 128, 0.384);
+}
+
+.section-1 .font-awesomes{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.section-1 .price{
+    font-size: 1.2rem;
+    color: #102a42;
+    font-weight: bold;
+}
+
+.section-1 .font-awesomes p{
+    margin: 0px 20px;
+    font-size: 1.5rem;
+    color: #102a42;
+    font-weight: bold;
+}
+
+.section-1 .font-awesomes .fa{
+    cursor: pointer;
+}
+
+.section-1 .fa-trash{
+    font-size: 25px;
+    color: rgb(126, 17, 17);
+    cursor: pointer;
+}
+
+.new-img{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.new-img div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.continue-shopping div{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.continue-shopping div .contine-shopping{
+    background: #ab7a5f;
+    color: #eaded7;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    padding: 8px 14px;
+    margin-right: 20px;
+    border-radius: 10px;
+}
+
+.continue-shopping div .clear-shopping{
+    background: rgb(126, 17, 17);
+    color: #eaded7;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    padding: 8px 14px;
+    margin-right: 20px;
+    border-radius: 10px;
+}
+
+.continue-shopping div .clear-shopping:hover{
+    background: rgb(236, 29, 29);
+}
+
+.continue-shopping div .contine-shopping:hover{
+    background: #d49877;
+    color: #774f3a;
+}
+
+@media (max-width: 700px) {
+    .section-1 .new-img img{
+        width: 150px;
+        height: 100px;
+    }
+
+    .new-img div{
+        flex-direction: column;
+    }
+
+    .section-1 .new-img img{
+        margin-right: 0px;
+    }
+
+    .section-1 .new-img div h3{
+        font-size: 1rem;
+    }
+    .section-1 .font-awesomes{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .section-1 .font-awesomes p{
+        margin: 8px 0px;
+        font-size: 1rem;
+    }
+
+    .section-1 .price{
+        font-size: 1rem;
+        color: #102a42;
+        font-weight: bold;
+    }
+
+    .section-1 .fa-trash{
+        font-size: 20px;
+    }
+
+    .continue-shopping div{
+        flex-direction: column;
+    }
+
+    .continue-shopping div{
+        align-items: center;
+    }
+
+    .continue-shopping div .contine-shopping{
+        margin-bottom: 10px;
+        font-size: .9rem;
+    }
+    .continue-shopping div .clear-shopping{
+        font-size: .9rem;
+    }
+    
+}

@@ -1,0 +1,33 @@
+.genericnotfound{
+    margin: 0 auto;
+    width: 90%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3em;
+}
+
+.genericnotfound h1{
+    color: #102a42;
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+.genericnotfound  button{
+    background: #ab7a5f;
+    color: rgb(226, 226, 226);
+    font-size: 1.5rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all .3s ease-in;
+    padding: 10px 20px;
+    border-radius: 50px;
+}
+
+
+.genericnotfound button:hover{
+    color: #6b3618;
+    background: #9e6a4d;
+}
