@@ -1,13 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './HamburgerPage.css'
+import { useGlobalContext } from '../context'
 
-const HamburgerPage = ({visible, switchVisible}) => {
+const HamburgerPage = () => {
+    const { isOpen, ToggleIsOpen } = useGlobalContext()
     return (
-        <div style={visible===true ? {display:'block'} : {display:'none'}} className='hamburgerpage'>
+        isOpen && <div className='hamburgerpage'>
             <header>
             <Link to='/'><img src="https://react-course-comfy-sloth-store.netlify.app/static/media/logo.221f6b13.svg" alt="" /></Link>
-            <i class="fas fa-times" onClick={switchVisible}></i>
+            <i class="fas fa-times" onClick={ToggleIsOpen}></i>
             </header>
 
             <ul class='hamburgerpage-nav'>
@@ -26,7 +28,7 @@ const HamburgerPage = ({visible, switchVisible}) => {
             </div>
 
         </div>
-    )
+    ) 
 }
 
 export default HamburgerPage

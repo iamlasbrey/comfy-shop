@@ -1,13 +1,52 @@
-import React from 'react'
+import React,{useEffect, useState} from 'react'
 import './SingleProductPage.css'
-import { Link } from 'react-router-dom'
+import { Link,useParams } from 'react-router-dom'
 import img from './sofa.jpg'
 
 const SingleProductPage = () => {
+    const id = useParams().id
+    const [loading, isLoading] = useState(true)
+    const [SingleProduct, setSingleProduct] = useState(null)
+    const url = `https://comfy-sloth-api.herokuapp.com/api/products/search/${id}`
+    
+
+    console.log(SingleProduct)
+
+    
+    const GetSingleProduct=async()=>{
+        isLoading(true)
+        try {
+            const response = await fetch(url)
+            const status = await response.json()
+            if(status){
+                setSingleProduct(status)
+                isLoading(false)
+            }else{
+                setSingleProduct(null)
+            }
+        } catch (error) {
+            console.log(error)
+            isLoading(false)
+        }
+    }
+
+    useEffect(()=>{
+        GetSingleProduct()
+    },[id])
+
+
+        if(loading){
+            return 'loading'
+        }
+
+        if(!SingleProduct){
+            return  <h1> No Furniture to display </h1>
+        }
+
     return (
         <div className='singlepage'>
             <div className='singlepagecontent'>
-                <h1><Link to='/'>Home /</Link> <Link to='/'>Products</Link> / Modern Poster </h1>
+                <h1><Link to='/'>Home /</Link> <Link to='/products'>Products</Link> / {SingleProduct.title} </h1>
             </div>
 
             <div className='single-page-section-two'>    
@@ -15,28 +54,29 @@ const SingleProductPage = () => {
 
             <div className='single-page-section-two-bottom'>
 
-                <div className='single-page-section-two-bottom-top'>
-                    <div className='single-product-img'><img src={img} alt="" /></div>
+        <div className='single-page-section-two-bottom-top'>
+            <div className='single-product-img'>  <img src={SingleProduct.image[0]} alt="" onError={(e)=>{e.target.onerror = null; e.target.src='https://images.pexels.com/photos/6438762/pexels-photo-6438762.jpeg?cs=srgb&dl=pexels-max-vakhtbovych-6438762.jpg&fm=jpg' }}/></div>
                 <div className='picture-options-folder'>
-                        <div className='picture-option'><img src={img} alt="" /></div>
-                        <div className='picture-option'><img src={img} alt="" /></div>
-                        <div className='picture-option'><img src={img} alt="" /></div>
-                        <div className='picture-option'><img src={img} alt="" /></div>
-                        <div className='picture-option'><img src={img} alt="" /></div>
+                    {
+                        SingleProduct.image.map((items)=>(
+                            <div className='picture-option'>
+                            <img src={items} alt="" onError={(e)=>{e.target.onerror = null; e.target.src='https://images.pexels.com/photos/6438762/pexels-photo-6438762.jpeg?cs=srgb&dl=pexels-max-vakhtbovych-6438762.jpg&fm=jpg' }}/></div>
+                        ))
+                    }
                     </div>
                 </div>
 
 
                 <div className='single-page-section-two-bottom-top-two'>
-                <h1>Modern Poster</h1>
-                <p className='price'>$30.99</p>
+                <h1> {SingleProduct.title} </h1>
+                <p className='price'>${SingleProduct.price} </p>
                 <p className='description'>
-                Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr dreamcatcher waistcoat, authentic chillwave trust fund. Viral typewriter fingerstache pinterest pork belly narwhal. Schlitz venmo everyday carry kitsch pitchfork chillwave iPhone taiyaki trust fund hashtag kinfolk microdosing gochujang live-edge
+                {SingleProduct.description}
                 </p>
 
-                <p className='available'>Available : <span>In Stock</span></p>
-                <p className='sku'>SKU : <span>RecQ0fMd8T0Vk211E</span></p>
-                <p className='brand'>Brand : <span>Liddy</span></p>
+                <p className='available'>Available : <span>{SingleProduct.available ? 'In Stock': 'Out Of Stock'}</span></p>
+                <p className='sku'>SKU : <span>{SingleProduct._id}</span></p>
+                <p className='brand'>Brand : <span>{SingleProduct.company}</span></p>
 
                 <hr />
 

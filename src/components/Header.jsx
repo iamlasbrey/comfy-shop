@@ -1,8 +1,10 @@
 import './Header.css'
 import React from 'react'
 import {Link} from 'react-router-dom'
+import { useGlobalContext } from '../context'
 
 const Header=()=>{
+    const { ToggleIsOpen } = useGlobalContext()
     return (
         <div className='header'>
                 <Link to='/'> <img src="https://react-course-comfy-sloth-store.netlify.app/static/media/logo.221f6b13.svg" alt="" /> </Link>
@@ -29,7 +31,7 @@ const Header=()=>{
                     <h2>Login</h2><i class="fas fa-user-plus"></i>
                 </div>
             </div>
-            <i class="fas fa-bars"></i>
+            <i class="fas fa-bars" onClick={ToggleIsOpen}></i>
         </div>
     ); 
 }

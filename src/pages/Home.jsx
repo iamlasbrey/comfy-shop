@@ -1,9 +1,24 @@
 import React from 'react'
-import sofa from './sofa.jpg'
 import { Link } from 'react-router-dom'
+import FeaturedProducts from '../components/FeaturedProducts'
 import './Home.css'
+import { useGlobalContext } from '../context'
+import { css } from "@emotion/react";
+import BounceLoader from "react-spinners/BounceLoader";
 
 const Home = () => {
+    const { Featured, loading } = useGlobalContext()
+    let color= "#ab7a5f"
+
+        const override = css`
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 3em;
+        /* margin-top: 3em;
+        margin-bottom: 3em; */
+        `;
+
+    
     return (
         <div className='home'>
             <section className="section-one">
@@ -19,7 +34,7 @@ const Home = () => {
 
                 </div>
                 <div className="hero-image">
-                    <img src={sofa} alt="" />
+                    <img src='https://images.pexels.com/photos/6438762/pexels-photo-6438762.jpeg?cs=srgb&dl=pexels-max-vakhtbovych-6438762.jpg&fm=jpg' alt="" />
                 </div>
             </section>
 
@@ -30,36 +45,10 @@ const Home = () => {
                         <div className="divider"></div>
                     </div>
 
-                    <div className="feaured-products-container">
-                        <Link to='/furniture/:id'>
-                        <div className='featured-products'>
-                            <img src={sofa} alt="" />
-                            <div class='titleandprice'>
-                                <p class='title'>Entertainment Center</p>
-                                <p class='price'>$599.99</p>
-                            </div>
-                        </div>
-                        </Link>
-
-                        <Link to='/furniture/:id'>
-                        <div className='featured-products'>
-                            <img src={sofa} alt="" />
-                            <div class='titleandprice'>
-                                <p class='title'>Entertainment Center</p>
-                                <p class='price'>$599.99</p>
-                            </div>
-                        </div>
-                        </Link>
-
-                        <Link to='/furniture/:id'>
-                        <div className='featured-products'>
-                            <img src={sofa} alt="" />
-                            <div class='titleandprice'>
-                                <p class='title'>Entertainment Center</p>
-                                <p class='price'>$599.99</p>
-                            </div>
-                        </div>
-                        </Link>
+                    <div className= {loading ? '' : 'feaured-products-container'}>
+                        {
+                            loading ? <BounceLoader color={color} loading={loading} css={override} size={300} /> : Featured.map((items)=>(<FeaturedProducts items={items} key={items._id}/> ))
+                        }            
                     </div>
 
                         <Link to='/products'>

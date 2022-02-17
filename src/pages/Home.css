@@ -127,27 +127,6 @@
     margin-bottom: 2em;
 }
 
-.featured-products img{
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 10px; 
-}
-
-.titleandprice{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.featured-products .title{
-    color: #102a42;
-}
-
-.featured-products .price{
-    color: #ab7a5f;
-}
 
 .btn-all-products{
     text-align: center;
