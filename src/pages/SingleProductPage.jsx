@@ -2,6 +2,8 @@ import React,{useEffect, useState} from 'react'
 import './SingleProductPage.css'
 import { Link,useParams } from 'react-router-dom'
 import { useGlobalContext } from '../context'
+import { css } from "@emotion/react";
+import BounceLoader from "react-spinners/BounceLoader";
 
 const SingleProductPage = () => {
     const id = useParams().id
@@ -9,6 +11,7 @@ const SingleProductPage = () => {
     const [SingleProduct, setSingleProduct] = useState(null)
     const url = `https://comfy-sloth-api.herokuapp.com/api/products/search/${id}`
     const {addTocart } = useGlobalContext()
+    let color= "#ab7a5f"
     
     const GetSingleProduct=async()=>{
         isLoading(true)
@@ -31,10 +34,19 @@ const SingleProductPage = () => {
         GetSingleProduct()
     },[id])
 
+    const override = css`
+    display: block;
+    margin: 0 auto;
+    margin-top: 10em
+    `;
 
-        if(loading){
-            return 'loading'
-        }
+
+    if(loading){
+        return (
+            <BounceLoader color={color} loading={loading} css={override} size={300} />
+        )
+    }
+
 
         if(!SingleProduct){
             return  <h1> No Furniture to display </h1>

@@ -9,7 +9,7 @@ import GenericNotFound from './pages/GenericNotFound'
 import About from './pages/About'
 import Footer from './components/Footer'
 import SingleProductPage from './pages/SingleProductPage'
-import Cart from './pages/Cart'
+import CartPage from './pages/CartPage'
 
 function App(){
 
@@ -21,8 +21,8 @@ function App(){
               <Route exact path='/' element={<Home />} />
               <Route path='products' element={<ProductPage />} />
               <Route  path='about' element={<About />}/>
-              <Route  path='furniture/:id' element={<SingleProductPage/>} />
-              <Route  path='mycart' element={ <Cart/>} />
+              <Route  path='furniture/:id' element={<SingleProductPage />} />
+              <Route  path='mycart' element={ <CartPage />} />
               <Route path='*' element={<GenericNotFound />} />
           </Routes>
           <Footer />

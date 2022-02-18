@@ -27,7 +27,7 @@ const ProductComponentlist = () => {
 
     if(filteredResults.length < 1){
         return(
-            <h1> No Furniture  Matches Search </h1>
+            <h1 className='nofurnitrematches'> No Furniture  Matches Search </h1>
         )
     }
     return (

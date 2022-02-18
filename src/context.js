@@ -12,8 +12,6 @@ const AppProvider = ({ children }) => {
     const [searchResult, setsearchResult] = useState([])
     const [Featured, SetFeatured] = useState([])
     const [mainData, SetmainData] = useState([])
-    let [productCart, setproductCart] = useState([])
-    
 
 
     //toggle hamburgerpage
@@ -21,15 +19,22 @@ const AppProvider = ({ children }) => {
         setIsOpen(!isOpen)
     }
 
+
+        const getCartValues=()=>{
+            const storedValues = localStorage.getItem('myCartItems')
+            if(!storedValues) {
+                setproductCart([])
+            }
+            return JSON.parse(storedValues)
+        }
     //add to cart
     const addTocart=(id)=>{
         const myCart = cart.filter((furniture)=>furniture._id === id)[0]
-            productCart.push(myCart)
-            console.log(productCart)
-        }
+        if(productCart.includes(myCart) === false) { productCart.push(myCart) }
+            localStorage.setItem('myCartItems', JSON.stringify(productCart))
+    }
 
-        console.log(productCart)
-        
+    let [productCart , setproductCart] = useState(getCartValues())
 
     const fetchData=async()=>{
         SetLoading(true)
@@ -156,7 +161,8 @@ const AppProvider = ({ children }) => {
             SelectDinning,
             SelectKids,
             resetButton,
-            addTocart
+            addTocart,
+            productCart
         }}
         >
         {children}
