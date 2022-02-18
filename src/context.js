@@ -12,6 +12,8 @@ const AppProvider = ({ children }) => {
     const [searchResult, setsearchResult] = useState([])
     const [Featured, SetFeatured] = useState([])
     const [mainData, SetmainData] = useState([])
+    let [productCart, setproductCart] = useState([])
+    
 
 
     //toggle hamburgerpage
@@ -19,6 +21,15 @@ const AppProvider = ({ children }) => {
         setIsOpen(!isOpen)
     }
 
+    //add to cart
+    const addTocart=(id)=>{
+        const myCart = cart.filter((furniture)=>furniture._id === id)[0]
+            productCart.push(myCart)
+            console.log(productCart)
+        }
+
+        console.log(productCart)
+        
 
     const fetchData=async()=>{
         SetLoading(true)
@@ -64,12 +75,9 @@ const AppProvider = ({ children }) => {
     const filteredResults = searchTerm.length < 1 ? cart : searchResult
 
     //select butons
-
     const SelectAll =()=>{
         SetCart(mainData)
     }
-
-    console.log(cart)
 
     const SelectOffice =()=>{
         let OfficeFilter = cart.filter((obj)=>{
@@ -147,7 +155,8 @@ const AppProvider = ({ children }) => {
             SelectBedroom,
             SelectDinning,
             SelectKids,
-            resetButton
+            resetButton,
+            addTocart
         }}
         >
         {children}

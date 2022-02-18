@@ -1,17 +1,14 @@
 import React,{useEffect, useState} from 'react'
 import './SingleProductPage.css'
 import { Link,useParams } from 'react-router-dom'
-import img from './sofa.jpg'
+import { useGlobalContext } from '../context'
 
 const SingleProductPage = () => {
     const id = useParams().id
     const [loading, isLoading] = useState(true)
     const [SingleProduct, setSingleProduct] = useState(null)
     const url = `https://comfy-sloth-api.herokuapp.com/api/products/search/${id}`
-    
-
-    console.log(SingleProduct)
-
+    const {addTocart } = useGlobalContext()
     
     const GetSingleProduct=async()=>{
         isLoading(true)
@@ -58,9 +55,10 @@ const SingleProductPage = () => {
             <div className='single-product-img'>  <img src={SingleProduct.image[0]} alt="" onError={(e)=>{e.target.onerror = null; e.target.src='https://images.pexels.com/photos/6438762/pexels-photo-6438762.jpeg?cs=srgb&dl=pexels-max-vakhtbovych-6438762.jpg&fm=jpg' }}/></div>
                 <div className='picture-options-folder'>
                     {
-                        SingleProduct.image.map((items)=>(
-                            <div className='picture-option'>
-                            <img src={items} alt="" onError={(e)=>{e.target.onerror = null; e.target.src='https://images.pexels.com/photos/6438762/pexels-photo-6438762.jpeg?cs=srgb&dl=pexels-max-vakhtbovych-6438762.jpg&fm=jpg' }}/></div>
+                        SingleProduct.image.map((items, index)=>(
+                            <div className='picture-option' key={index}>
+                            <img src={items} alt="" onError={(e)=>{e.target.onerror = null; e.target.src='https://images.pexels.com/photos/6438762/pexels-photo-6438762.jpeg?cs=srgb&dl=pexels-max-vakhtbovych-6438762.jpg&fm=jpg' }}/>
+                            </div>
                         ))
                     }
                     </div>
@@ -86,7 +84,7 @@ const SingleProductPage = () => {
                 <i class="fas fa-plus"></i>
                 </div>
 
-                <button className='add-to-cart'>Add To Cart</button>
+                <button className='add-to-cart' onClick={()=>addTocart(SingleProduct._id)}>Add To Cart</button>
                 </div>
 
 
