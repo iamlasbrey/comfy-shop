@@ -13,15 +13,18 @@ const HamburgerPage = () => {
             </header>
 
             <ul class='hamburgerpage-nav'>
-                <li><Link exact to='/'>Home</Link></li>
-                <li><Link to='/products'>Products</Link></li>
-                <li><Link to='/about'>About</Link></li>
+                <li onClick={ToggleIsOpen}><Link exact to='/'>Home</Link></li>
+                <li onClick={ToggleIsOpen}><Link to='/products'>Products</Link></li>
+                <li onClick={ToggleIsOpen}><Link to='/about'>About</Link></li>
             </ul>
 
             <div className='hamburgerpage-cart-login'>
-                <div className='hamburgerpage-cart'>
+                <Link to='/myCart'>
+                <div className='hamburgerpage-cart' onClick={ToggleIsOpen}>
                     <h2>Cart</h2><i class="fas fa-shopping-cart"></i> <span className='hamburger-cart-number'>0</span>
                 </div>
+                </Link>
+                
                 <div className='hamburgerpage-login'>
                     <h2>Login</h2><i class="fas fa-user-plus"></i>
                 </div>

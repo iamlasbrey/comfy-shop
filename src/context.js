@@ -1,7 +1,19 @@
 import React, { useContext, useEffect, useState } from 'react'
 
+
 const url = 'https://comfy-sloth-api.herokuapp.com/api/products'
 const AppContext = React.createContext()
+
+
+
+function getCartValues(){
+    const storedValues = localStorage.getItem('myCartItems')
+    if(!storedValues) return []
+    else{
+        return JSON.parse(storedValues)
+    }
+}
+
 
 
 const AppProvider = ({ children }) => {
@@ -12,29 +24,43 @@ const AppProvider = ({ children }) => {
     const [searchResult, setsearchResult] = useState([])
     const [Featured, SetFeatured] = useState([])
     const [mainData, SetmainData] = useState([])
+    const [productcart, setProductCart] = useState(getCartValues())
 
+    //cartitems
+    const [total, setTotal] = useState(0)
+    const [price, setAmount] = useState(0)
+
+    const decrease=()=>{}
+
+    const remove=()=>{}
+
+    const increase=(product)=>{
+        const exist = productcart.find((x)=>x._id === product._id)
+        if(exist){
+            setProductCart(
+                productcart.map((x)=>
+                    x._id === product._id ? { ...exist, amount: exist.amount + 1 } : x
+                )
+            )
+        }else{
+            setProductCart([...productcart, {...product, amount: 1}])
+        }
+    }
 
     //toggle hamburgerpage
     const ToggleIsOpen=()=>{
         setIsOpen(!isOpen)
     }
+    
 
 
-        const getCartValues=()=>{
-            const storedValues = localStorage.getItem('myCartItems')
-            if(!storedValues) {
-                setproductCart([])
-            }
-            return JSON.parse(storedValues)
-        }
     //add to cart
     const addTocart=(id)=>{
         const myCart = cart.filter((furniture)=>furniture._id === id)[0]
-        if(productCart.includes(myCart) === false) { productCart.push(myCart) }
-            localStorage.setItem('myCartItems', JSON.stringify(productCart))
+        if(productcart.includes(myCart) === false) { productcart.push(myCart) }
+        localStorage.setItem('myCartItems', JSON.stringify(productcart))
     }
 
-    let [productCart , setproductCart] = useState(getCartValues())
 
     const fetchData=async()=>{
         SetLoading(true)
@@ -162,7 +188,11 @@ const AppProvider = ({ children }) => {
             SelectKids,
             resetButton,
             addTocart,
-            productCart
+            increase,
+            decrease,
+            remove,
+            price,
+            productcart
         }}
         >
         {children}

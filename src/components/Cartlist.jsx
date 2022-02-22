@@ -3,15 +3,15 @@ import Cart from './Cart'
 import { useGlobalContext } from '../context'
     
 const Cartlist = () => {
-    const { productCart } = useGlobalContext()
+    const { productcart } = useGlobalContext()
 
-        if(!productCart){
-            <h1>'Your Cart is Empty'</h1>
+        if(productcart.length < 1){
+            return <h1>Your Cart is Empty</h1>
         }
     return (
         <div>
             {
-                productCart.map((carts, index)=>(
+                productcart.map((carts, index)=>(
                     <Cart carts={carts} index={index}/>
                 ))
             }
