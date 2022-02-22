@@ -26,9 +26,6 @@ const AppProvider = ({ children }) => {
     const [mainData, SetmainData] = useState([])
     const [productcart, setProductCart] = useState(getCartValues())
 
-    //cartitems
-    const [total, setTotal] = useState(0)
-    const [price, setAmount] = useState(0)
 
     const decrease=()=>{}
 
@@ -191,7 +188,6 @@ const AppProvider = ({ children }) => {
             increase,
             decrease,
             remove,
-            price,
             productcart
         }}
         >

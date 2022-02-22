@@ -3,7 +3,7 @@ import { useGlobalContext } from '../context'
     
 
 const Cart = ({carts}) => {
-    const { increase,remove, decrease, amount} = useGlobalContext()
+    const { increase,remove, decrease } = useGlobalContext()
 
     return (
             <section className="section-1">
